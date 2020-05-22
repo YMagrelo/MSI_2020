@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333333;
+}
+
+.app-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+  &__content {
+    background: #fff;
+    padding: 40px 140px 140px;
+  }
+
+  &__favorite {
+    background: #f8f8f8;
+  }
+}
+
+.randomizer {
+
+  &__heading {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  &__underTitle {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+}
