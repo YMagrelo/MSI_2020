@@ -2,6 +2,7 @@ import { getJoke } from '../api';
 
 const SET_RANDOM_JOKE = 'SET_RANDOM_JOKE';
 const SET_FAVORITE_JOKE = 'SET_FAVORITE_JOKE';
+const DELETE_FROM_FAVORITE = 'DELETE_FROM_FAVORITE';
 
 const initialState = {
   randomJoke: null,
@@ -22,6 +23,13 @@ export const reducer = (state = initialState, action) => {
         favoriteJokes: [...state.favoriteJokes, action.payload],
       };
 
+    case DELETE_FROM_FAVORITE:
+      return {
+        ...state,
+        favoriteJokes: state.favoriteJokes
+          .filter(joke => joke.id !== action.payload),
+      };
+
     default:
       return state;
   }
@@ -34,6 +42,11 @@ const setRandomJoke = payload => ({
 
 export const setFavoriteJoke = payload => ({
   type: SET_FAVORITE_JOKE,
+  payload,
+});
+
+export const deleteFavoriteJoke = payload => ({
+  type: DELETE_FROM_FAVORITE,
   payload,
 });
 

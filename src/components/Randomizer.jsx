@@ -11,7 +11,7 @@ const Randomizer = (props) => {
 
   return (
     <div className="randomizer">
-      <h1 className="randomizer__heading">MSI 2020</h1>
+      <h1 className="randomizer__heading">Chuck Norris facts</h1>
       <p className="randomizer__title">Hey!</p>
       <p className="randomizer__underTitle">
           Let’s try to find a joke for you:

@@ -28,7 +28,7 @@ const RandomJoke = (props) => {
         </button>
       </div>
       <div className="content__item-container">
-        <div className="content__textIcon-container">
+        <div className="content__textIcon-wrapper">
           <img
             src={message}
             alt="joke item icon"
@@ -37,7 +37,7 @@ const RandomJoke = (props) => {
         </div>
         <div className="content__joke joke">
           <div className="joke__id-wrapper">
-            <span className="joke__id-title">ID:</span>
+            <span className="joke__id-title">ID: </span>
             <a
               href={randomJoke.url}
               className="joke__id-link"

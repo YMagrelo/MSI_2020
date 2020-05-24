@@ -52,9 +52,9 @@
     display: flex;
   }
 
-  &__textIcon-container {
+  &__textIcon-wrapper {
     position: relative;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     margin-right: 10px;
     background: #fff;
