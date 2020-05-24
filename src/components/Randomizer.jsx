@@ -2,12 +2,12 @@
 import React from 'react';
 import '../App.scss';
 import { connect } from 'react-redux';
-import { getRandomJokeThunk } from '../redux/reducer';
+import { getRandomJokeThunk, setFavoriteJoke } from '../redux/reducer';
 import RandomJoke from './RandomJoke';
 import './Randomizer.scss';
 
 const Randomizer = (props) => {
-  const { getRandomJoke, randomJoke } = props;
+  const { getRandomJoke, randomJoke, setFavorite } = props;
 
   return (
     <div className="randomizer">
@@ -25,7 +25,12 @@ const Randomizer = (props) => {
       </button>
       {randomJoke === null
         ? null
-        : <RandomJoke randomJoke={randomJoke} />}
+        : (
+          <RandomJoke
+            randomJoke={randomJoke}
+            setFavorite={setFavorite}
+          />
+        )}
 
     </div>
   );
@@ -37,6 +42,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getRandomJoke: () => dispatch(getRandomJokeThunk()),
+  setFavorite: payload => dispatch(setFavoriteJoke(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Randomizer);

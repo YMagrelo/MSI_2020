@@ -7,7 +7,11 @@ import favorite from '../assets/icon/favorite.svg';
 import message from '../assets/icon/message.svg';
 
 const RandomJoke = (props) => {
-  const { randomJoke } = props;
+  const { randomJoke, setFavorite } = props;
+  const handleAddToFavorite = () => {
+    setFavorite(randomJoke);
+  };
+
   const previousDate = new Date(randomJoke.updated_at);
   const nextDate = new Date();
   const passedHours = ((((nextDate - previousDate) / 1000) / 60) / 60);
@@ -18,6 +22,7 @@ const RandomJoke = (props) => {
         <button
           type="button"
           className="content__addToFavorite"
+          onClick={handleAddToFavorite}
         >
           <img src={favorite} alt="add to favorite" />
         </button>
@@ -42,11 +47,10 @@ const RandomJoke = (props) => {
           </div>
           <div className="joke__value">{randomJoke.value}</div>
           <div className="joke__footer">
-            <div
-              className="joke__date">
+            <div className="joke__date">
               {`Last update: ${passedHours.toFixed()} hours ago`}
             </div>
-            <div className="joke__categories">dfdfd</div>
+            <div className="joke__categories">Categories</div>
           </div>
         </div>
       </div>
