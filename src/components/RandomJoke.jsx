@@ -8,6 +8,9 @@ import message from '../assets/icon/message.svg';
 
 const RandomJoke = (props) => {
   const { randomJoke } = props;
+  const previousDate = new Date(randomJoke.updated_at);
+  const nextDate = new Date();
+  const passedHours = ((((nextDate - previousDate) / 1000) / 60) / 60);
 
   return (
     <div className="randomizer__content content">
@@ -39,7 +42,10 @@ const RandomJoke = (props) => {
           </div>
           <div className="joke__value">{randomJoke.value}</div>
           <div className="joke__footer">
-            <div className="joke__date">{`Last update: ${randomJoke.updated_at}`}</div>
+            <div
+              className="joke__date">
+              {`Last update: ${passedHours.toFixed()} hours ago`}
+            </div>
             <div className="joke__categories">dfdfd</div>
           </div>
         </div>
