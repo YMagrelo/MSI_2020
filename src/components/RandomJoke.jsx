@@ -11,12 +11,14 @@ const RandomJoke = (props) => {
 
   return (
     <div className="randomizer__content content">
-      <button
-        type="button"
-        className="content__addToFavorite"
-      >
-        <img src={favorite} alt="add to favorite" />
-      </button>
+      <div className="content__addToFavorite-wrapper">
+        <button
+          type="button"
+          className="content__addToFavorite"
+        >
+          <img src={favorite} alt="add to favorite" />
+        </button>
+      </div>
       <div className="content__item-container">
         <div className="content__textIcon-container">
           <img
@@ -25,8 +27,21 @@ const RandomJoke = (props) => {
             className="content__textIcon"
           />
         </div>
-        <div className="content__joke-wrapper">
-          {randomJoke.value}
+        <div className="content__joke joke">
+          <div className="joke__id-wrapper">
+            <span className="joke__id-title">ID:</span>
+            <a
+              href={randomJoke.url}
+              className="joke__id-link"
+            >
+              {randomJoke.id}
+            </a>
+          </div>
+          <div className="joke__value">{randomJoke.value}</div>
+          <div className="joke__footer">
+            <div className="joke__date">{`Last update: ${randomJoke.updated_at}`}</div>
+            <div className="joke__categories">dfdfd</div>
+          </div>
         </div>
       </div>
     </div>
