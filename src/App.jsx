@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { Randomizer } from './components/Randomizer';
+import Randomizer from './components/Randomizer';
 
 const App = () => (
   <div className="app-wrapper">
