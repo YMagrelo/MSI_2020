@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import './Randomizer.scss';
 import favorite from '../assets/icon/favorite.svg';
 import message from '../assets/icon/message.svg';
+import { getPassedHours } from '../constants';
 
 const RandomJoke = (props) => {
   const { randomJoke, setFavorite } = props;
@@ -14,7 +15,7 @@ const RandomJoke = (props) => {
 
   const previousDate = new Date(randomJoke.updated_at);
   const nextDate = new Date();
-  const passedHours = ((((nextDate - previousDate) / 1000) / 60) / 60);
+  const passedHours = getPassedHours(previousDate, nextDate);
 
   return (
     <div className="randomizer__content content">

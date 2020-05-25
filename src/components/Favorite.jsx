@@ -5,41 +5,42 @@ import { connect } from 'react-redux';
 import { deleteFavoriteJoke } from '../redux/reducer';
 import favorite from '../assets/icon/heart.svg';
 import message from '../assets/icon/message.svg';
+import { getPassedHours } from '../constants';
 
 const Favorite = (props) => {
   const { favoriteJokes, deleteFavorite } = props;
 
   return (
     <div className="favorite">
-      <h2 className="favorite__title">Favorite</h2>
+      <h2 className="favorite__title">Favourite</h2>
       {favoriteJokes.map((joke) => {
         const previousDate = new Date(joke.updated_at);
         const nextDate = new Date();
-        const passedHours = ((((nextDate - previousDate) / 1000) / 60) / 60);
+        const passedHours = getPassedHours(previousDate, nextDate);
         const handleDeleteFavorite = () => {
           deleteFavorite(joke.id);
         };
 
         return (
-          <div className="favorite__content content">
-            <div className="content__addToFavorite-wrapper">
+          <div className="favorite__content content-favourite">
+            <div className="content-favourite__addToFavorite-wrapper">
               <button
                 type="button"
-                className="content__addToFavorite"
+                className="content-favourite__addToFavorite"
                 onClick={handleDeleteFavorite}
               >
                 <img src={favorite} alt="remove from favorites" />
               </button>
             </div>
-            <div className="content__item-container">
-              <div className="content__textIcon-container">
+            <div className="content-favourite__item-container">
+              <div className="content-favourite__textIcon-container">
                 <img
                   src={message}
                   alt="joke item icon"
-                  className="content__textIcon"
+                  className="content-favourite__textIcon"
                 />
               </div>
-              <div className="content__joke joke">
+              <div className="content-favourite__joke joke">
                 <div className="joke__id-wrapper">
                   <span className="joke__id-title">ID:</span>
                   <a
@@ -54,7 +55,6 @@ const Favorite = (props) => {
                   <div className="joke__date">
                     {`Last update: ${passedHours.toFixed()} hours ago`}
                   </div>
-                  <div className="joke__categories">Categories</div>
                 </div>
               </div>
             </div>
