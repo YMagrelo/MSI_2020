@@ -1,0 +1,20 @@
+.radio {
+  &__list {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 20px;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    margin-left: 15px;
+  }
+}
+
+.categories {
+  margin-top: 20px;
+  border: 1px solid lightseagreen;
+}

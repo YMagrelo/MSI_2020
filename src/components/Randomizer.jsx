@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getRandomJokeThunk, setFavoriteJoke } from '../redux/reducer';
 import RandomJoke from './RandomJoke';
 import './Randomizer.scss';
+import Radio from './Radio';
 
 const Randomizer = (props) => {
   const { getRandomJoke, randomJoke, setFavorite } = props;
@@ -16,6 +17,7 @@ const Randomizer = (props) => {
       <p className="randomizer__underTitle">
           Let’s try to find a joke for you:
       </p>
+      <Radio />
       <button
         type="button"
         className="randomizer__button"

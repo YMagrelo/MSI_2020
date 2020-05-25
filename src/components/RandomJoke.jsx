@@ -9,6 +9,7 @@ import { getPassedHours } from '../constants';
 
 const RandomJoke = (props) => {
   const { randomJoke, setFavorite } = props;
+
   const handleAddToFavorite = () => {
     setFavorite(randomJoke);
   };

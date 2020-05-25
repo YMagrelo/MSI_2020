@@ -22,7 +22,7 @@ const Favorite = (props) => {
         };
 
         return (
-          <div className="favorite__content content-favourite">
+          <div className="favorite__content content-favourite" key={joke.id}>
             <div className="content-favourite__addToFavorite-wrapper">
               <button
                 type="button"

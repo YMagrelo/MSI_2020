@@ -1,12 +1,14 @@
-import { getJoke } from '../api';
+import { getJoke, getCategories } from '../api';
 
 const SET_RANDOM_JOKE = 'SET_RANDOM_JOKE';
 const SET_FAVORITE_JOKE = 'SET_FAVORITE_JOKE';
 const DELETE_FROM_FAVORITE = 'DELETE_FROM_FAVORITE';
+const SET_CATEGORIES = 'SET_CATEGORIES';
 
 const initialState = {
   randomJoke: null,
   favoriteJokes: [],
+  categories: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -30,12 +32,23 @@ export const reducer = (state = initialState, action) => {
           .filter(joke => joke.id !== action.payload),
       };
 
+    case SET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+      };
+
     default:
       return state;
   }
 };
 
 const setRandomJoke = payload => ({
+  type: SET_RANDOM_JOKE,
+  payload,
+});
+
+const setCategories = payload => ({
   type: SET_RANDOM_JOKE,
   payload,
 });
@@ -54,5 +67,12 @@ export const getRandomJokeThunk = () => (dispatch) => {
   getJoke()
     .then((data) => {
       dispatch(setRandomJoke(data));
+    });
+};
+
+export const getCategoriesThunk = () => (dispatch) => {
+  getCategories()
+    .then((data) => {
+      dispatch(setCategories(data));
     });
 };
