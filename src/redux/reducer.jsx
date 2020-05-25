@@ -49,7 +49,7 @@ const setRandomJoke = payload => ({
 });
 
 const setCategories = payload => ({
-  type: SET_RANDOM_JOKE,
+  type: SET_CATEGORIES,
   payload,
 });
 

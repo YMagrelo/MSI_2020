@@ -5,17 +5,17 @@ import { connect } from 'react-redux';
 import { getCategoriesThunk } from '../redux/reducer';
 
 const Radio = (props) => {
+  const { categories, setCategories } = props;
   const [selected, setSelected] = useState('random');
+
+  useEffect(() => {
+    setCategories();
+  });
+
   const handleSelected = (event) => {
     const { value } = event.target;
 
     setSelected(value);
-
-    // if (selected === 'categories') {
-    //   useEffect(() => {
-
-    //   })
-    // }
   };
 
   return (
@@ -42,8 +42,15 @@ const Radio = (props) => {
           <span className="radio__text">From categories</span>
         </label>
         {selected === 'categories' ? (
-          <div className="categories">
-          Categories
+          <div className="categories__list">
+            {categories.map(cat => (
+              <button
+                type="button"
+                className="categories__item"
+              >
+                {cat}
+              </button>
+            ))}
           </div>
         ) : null}
       </div>
@@ -67,7 +74,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCategories: payload => dispatch(getCategoriesThunk(payload)),
+  setCategories: () => dispatch(getCategoriesThunk()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Radio);
