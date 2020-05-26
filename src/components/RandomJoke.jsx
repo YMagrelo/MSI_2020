@@ -43,6 +43,8 @@ const RandomJoke = (props) => {
             <a
               href={randomJoke.url}
               className="joke__id-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {randomJoke.id}
             </a>
@@ -52,7 +54,9 @@ const RandomJoke = (props) => {
             <div className="joke__date">
               {`Last update: ${passedHours.toFixed()} hours ago`}
             </div>
-            <div className="joke__categories">{randomJoke.categories.length ? randomJoke.categories : null}</div>
+            <div className="joke__categories">
+              {randomJoke.categories.length ? randomJoke.categories : null}
+            </div>
           </div>
         </div>
       </div>

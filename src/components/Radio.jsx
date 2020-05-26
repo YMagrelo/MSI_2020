@@ -5,7 +5,12 @@ import { connect } from 'react-redux';
 import { getCategoriesThunk } from '../redux/reducer';
 
 const Radio = (props) => {
-  const { categories, setCategories, getRandomJoke } = props;
+  const {
+    categories,
+    setCategories,
+    getRandomJoke,
+    getJokeFromCategories,
+  } = props;
   const [selected, setSelected] = useState('random');
   const [choosenCategories, setChoosenCategories] = useState('');
 
@@ -30,7 +35,8 @@ const Radio = (props) => {
     if (choosenCategories === '') {
       return getRandomJoke();
     }
-    alert('go fuck');
+
+    return getJokeFromCategories(choosenCategories);
   };
 
   return (

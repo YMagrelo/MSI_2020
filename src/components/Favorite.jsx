@@ -46,6 +46,8 @@ const Favorite = (props) => {
                   <a
                     href={joke.url}
                     className="joke__id-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {joke.id}
                   </a>

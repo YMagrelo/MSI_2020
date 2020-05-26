@@ -2,13 +2,22 @@
 import React from 'react';
 import '../App.scss';
 import { connect } from 'react-redux';
-import { getRandomJokeThunk, setFavoriteJoke } from '../redux/reducer';
+import {
+  getRandomJokeThunk,
+  setFavoriteJoke,
+  getJokeFromCategoriesThunk,
+} from '../redux/reducer';
 import RandomJoke from './RandomJoke';
 import './Randomizer.scss';
 import Radio from './Radio';
 
 const Randomizer = (props) => {
-  const { getRandomJoke, randomJoke, setFavorite } = props;
+  const {
+    getRandomJoke,
+    randomJoke,
+    setFavorite,
+    getJokeFromCategories,
+  } = props;
 
   return (
     <div className="randomizer">
@@ -17,7 +26,10 @@ const Randomizer = (props) => {
       <p className="randomizer__underTitle">
           Let’s try to find a joke for you:
       </p>
-      <Radio getRandomJoke={getRandomJoke} />
+      <Radio
+        getRandomJoke={getRandomJoke}
+        getJokeFromCategories={getJokeFromCategories}
+      />
       {randomJoke === null
         ? null
         : (
@@ -38,6 +50,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getRandomJoke: () => dispatch(getRandomJokeThunk()),
   setFavorite: payload => dispatch(setFavoriteJoke(payload)),
+  getJokeFromCategories: category => dispatch(
+    getJokeFromCategoriesThunk(category),
+  ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Randomizer);

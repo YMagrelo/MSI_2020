@@ -1,4 +1,4 @@
-import { getJoke, getCategories } from '../api';
+import { getJoke, getCategories, getJokeFromCategories } from '../api';
 
 const SET_RANDOM_JOKE = 'SET_RANDOM_JOKE';
 const SET_FAVORITE_JOKE = 'SET_FAVORITE_JOKE';
@@ -74,5 +74,12 @@ export const getCategoriesThunk = () => (dispatch) => {
   getCategories()
     .then((data) => {
       dispatch(setCategories(data));
+    });
+};
+
+export const getJokeFromCategoriesThunk = category => (dispatch) => {
+  getJokeFromCategories(category)
+    .then((data) => {
+      dispatch(setRandomJoke(data));
     });
 };
