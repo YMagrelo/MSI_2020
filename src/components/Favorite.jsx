@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { deleteFavoriteJoke } from '../redux/reducer';
 import favorite from '../assets/icon/heart.svg';
 import message from '../assets/icon/message.svg';
-import { getPassedHours } from '../constants';
+import { getPassedHours } from '../utilities';
 
 const Favorite = (props) => {
   const { favoriteJokes, deleteFavorite } = props;

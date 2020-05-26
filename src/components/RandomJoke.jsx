@@ -5,11 +5,10 @@ import { connect } from 'react-redux';
 import './Randomizer.scss';
 import favorite from '../assets/icon/favorite.svg';
 import message from '../assets/icon/message.svg';
-import { getPassedHours } from '../constants';
+import { getPassedHours } from '../utilities';
 
 const RandomJoke = (props) => {
   const { randomJoke, setFavorite } = props;
-
   const handleAddToFavorite = () => {
     setFavorite(randomJoke);
   };
@@ -61,6 +60,7 @@ const RandomJoke = (props) => {
         </div>
       </div>
     </div>
+
   );
 };
 

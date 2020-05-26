@@ -1,4 +1,9 @@
-import { getJoke, getCategories, getJokeFromCategories } from '../api';
+import {
+  getJoke,
+  getCategories,
+  getJokeFromCategories,
+  getJokeSearch,
+} from '../api';
 
 const SET_RANDOM_JOKE = 'SET_RANDOM_JOKE';
 const SET_FAVORITE_JOKE = 'SET_FAVORITE_JOKE';
@@ -9,6 +14,7 @@ const initialState = {
   randomJoke: null,
   favoriteJokes: [],
   categories: [],
+  searchJokes: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -79,6 +85,13 @@ export const getCategoriesThunk = () => (dispatch) => {
 
 export const getJokeFromCategoriesThunk = category => (dispatch) => {
   getJokeFromCategories(category)
+    .then((data) => {
+      dispatch(setRandomJoke(data));
+    });
+};
+
+export const getJokeSearchThunk = query => (dispatch) => {
+  getJokeSearch(query)
     .then((data) => {
       dispatch(setRandomJoke(data));
     });

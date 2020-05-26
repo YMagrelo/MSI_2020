@@ -9,14 +9,28 @@ const Radio = (props) => {
     categories,
     setCategories,
     getRandomJoke,
-    getJokeFromCategories,
+    setJokeFromCategories,
+    setJokeSearch,
   } = props;
   const [selected, setSelected] = useState('random');
   const [choosenCategories, setChoosenCategories] = useState('');
+  const [query, setQuery] = useState('');
+  const [inputError, setInputError] = useState(false);
 
   useEffect(() => {
     setCategories();
   });
+
+  const handleInput = (event) => {
+    const { value } = event.target;
+
+    setInputError(true);
+    setQuery(value);
+    if (query.length >= 3) {
+      setInputError(false);
+      // setJokeSearch(query);
+    }
+  };
 
   const handleSelected = (event) => {
     const { value } = event.target;
@@ -36,7 +50,7 @@ const Radio = (props) => {
       return getRandomJoke();
     }
 
-    return getJokeFromCategories(choosenCategories);
+    return setJokeFromCategories(choosenCategories);
   };
 
   return (
@@ -70,6 +84,7 @@ const Radio = (props) => {
                   type="button"
                   className="categories__item"
                   onClick={handleCategories}
+                  key={cat}
                 >
                   {cat}
                 </button>
@@ -87,6 +102,25 @@ const Radio = (props) => {
             />
             <span className="radio__text">Search</span>
           </label>
+          {selected === 'search'
+            ? (
+              <div className="radio__form">
+                <input
+                  className="radio__input"
+                  placeholder="Free text search..."
+                  value={query}
+                  onChange={handleInput}
+                />
+                {inputError
+                  ? (
+                    <span className="radio__input-error">
+                      input must be more than 3 characters
+                    </span>
+                  )
+                  : null}
+              </div>
+            )
+            : null}
         </div>
       </form>
       <button
