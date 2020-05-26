@@ -9,6 +9,8 @@ const SET_RANDOM_JOKE = 'SET_RANDOM_JOKE';
 const SET_FAVORITE_JOKE = 'SET_FAVORITE_JOKE';
 const DELETE_FROM_FAVORITE = 'DELETE_FROM_FAVORITE';
 const SET_CATEGORIES = 'SET_CATEGORIES';
+const SET_SEARCH_JOKES = 'SET_SEARCH_JOKES';
+const CLEAR_SEARCH = 'CLEAR_SEARCH';
 
 const initialState = {
   randomJoke: null,
@@ -23,6 +25,18 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         randomJoke: action.payload,
+      };
+
+    case SET_SEARCH_JOKES:
+      return {
+        ...state,
+        searchJokes: action.payload,
+      };
+
+    case CLEAR_SEARCH:
+      return {
+        ...state,
+        searchJokes: [],
       };
 
     case SET_FAVORITE_JOKE:
@@ -69,6 +83,15 @@ export const deleteFavoriteJoke = payload => ({
   payload,
 });
 
+const setSearchJoke = payload => ({
+  type: SET_SEARCH_JOKES,
+  payload,
+});
+
+export const clearSearchJoke = () => ({
+  type: CLEAR_SEARCH,
+});
+
 export const getRandomJokeThunk = () => (dispatch) => {
   getJoke()
     .then((data) => {
@@ -93,6 +116,8 @@ export const getJokeFromCategoriesThunk = category => (dispatch) => {
 export const getJokeSearchThunk = query => (dispatch) => {
   getJokeSearch(query)
     .then((data) => {
-      dispatch(setRandomJoke(data));
+      if (data.status !== 400) {
+        dispatch(setSearchJoke(data.result));
+      }
     });
 };

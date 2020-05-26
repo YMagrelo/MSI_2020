@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import './Radio.scss';
 import { connect } from 'react-redux';
-import { getCategoriesThunk } from '../redux/reducer';
+import {
+  getCategoriesThunk,
+  getJokeSearchThunk,
+  clearSearchJoke,
+} from '../redux/reducer';
 
 const Radio = (props) => {
   const {
@@ -10,7 +14,8 @@ const Radio = (props) => {
     setCategories,
     getRandomJoke,
     setJokeFromCategories,
-    setJokeSearch,
+    setSearchJoke,
+    clearSearch,
   } = props;
   const [selected, setSelected] = useState('random');
   const [choosenCategories, setChoosenCategories] = useState('');
@@ -26,9 +31,14 @@ const Radio = (props) => {
 
     setInputError(true);
     setQuery(value);
+    setSearchJoke(query);
+
+    if (query.length <= 3) {
+      clearSearch();
+    }
+
     if (query.length >= 3) {
       setInputError(false);
-      // setJokeSearch(query);
     }
   };
 
@@ -136,10 +146,13 @@ const Radio = (props) => {
 
 const mapStateToProps = state => ({
   categories: state.categories,
+  searchJokes: state.searchJokes,
 });
 
 const mapDispatchToProps = dispatch => ({
   setCategories: () => dispatch(getCategoriesThunk()),
+  setSearchJoke: query => dispatch(getJokeSearchThunk(query)),
+  clearSearch: () => dispatch(clearSearchJoke()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Radio);

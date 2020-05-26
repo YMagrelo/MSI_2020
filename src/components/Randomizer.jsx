@@ -6,11 +6,11 @@ import {
   getRandomJokeThunk,
   setFavoriteJoke,
   getJokeFromCategoriesThunk,
-  getJokeSearchThunk,
 } from '../redux/reducer';
 import RandomJoke from './RandomJoke';
 import './Randomizer.scss';
 import Radio from './Radio';
+import { SearchResult } from './SearchResult';
 
 const Randomizer = (props) => {
   const {
@@ -18,7 +18,7 @@ const Randomizer = (props) => {
     randomJoke,
     setFavorite,
     setJokeFromCategories,
-    setJokeSearch,
+    searchJokes,
   } = props;
 
   return (
@@ -31,7 +31,6 @@ const Randomizer = (props) => {
       <Radio
         getRandomJoke={getRandomJoke}
         setJokeFromCategories={setJokeFromCategories}
-        setJokeSearch={setJokeSearch}
       />
       {randomJoke === null
         ? null
@@ -41,13 +40,21 @@ const Randomizer = (props) => {
             setFavorite={setFavorite}
           />
         )}
-
+      {searchJokes.length
+        ? (
+          <SearchResult
+            searchJokes={searchJokes}
+            setFavorite={setFavorite}
+          />
+        )
+        : null}
     </div>
   );
 };
 
 const mapStateToProps = state => ({
   randomJoke: state.randomJoke,
+  searchJokes: state.searchJokes,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -56,7 +63,6 @@ const mapDispatchToProps = dispatch => ({
   setJokeFromCategories: category => dispatch(
     getJokeFromCategoriesThunk(category),
   ),
-  setJokeSearch: query => dispatch(getJokeSearchThunk(query)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Randomizer);
