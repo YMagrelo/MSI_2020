@@ -52,7 +52,7 @@ const RandomJoke = (props) => {
             <div className="joke__date">
               {`Last update: ${passedHours.toFixed()} hours ago`}
             </div>
-            <div className="joke__categories">Categories</div>
+            <div className="joke__categories">{randomJoke.categories.length ? randomJoke.categories : null}</div>
           </div>
         </div>
       </div>

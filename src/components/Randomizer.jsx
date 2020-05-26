@@ -17,14 +17,7 @@ const Randomizer = (props) => {
       <p className="randomizer__underTitle">
           Let’s try to find a joke for you:
       </p>
-      <Radio />
-      <button
-        type="button"
-        className="randomizer__button"
-        onClick={getRandomJoke}
-      >
-  Get a joke
-      </button>
+      <Radio getRandomJoke={getRandomJoke} />
       {randomJoke === null
         ? null
         : (
