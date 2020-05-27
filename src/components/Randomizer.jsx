@@ -22,6 +22,9 @@ const Randomizer = (props) => {
   return (
     <div className="randomizer">
       <h1 className="randomizer__heading">Chuck Norris facts</h1>
+      <div className="randomizer__burger">
+        <Burger />
+      </div>
       <p className="randomizer__title">Hey!</p>
       <p className="randomizer__underTitle">
           Let’s try to find a joke for you:
@@ -57,3 +60,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Randomizer);
+
+const Burger = () => (
+  <div className="burger">
+    <div className="burger__outter">
+      <div className="burger__inner" />
+      <div className="burger__inner" />
+    </div>
+    <div className="burger__title">Favourite</div>
+  </div>
+);

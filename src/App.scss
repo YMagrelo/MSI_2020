@@ -16,10 +16,25 @@ body {
 
   &__content {
     background: #fff;
-    padding: 40px 40px 140px 140px;
+    padding: 40px 140px 0 140px;
   }
 
   &__favorite {
     background: #f8f8f8;
+  }
+}
+
+@media (max-width: 1024px) {
+  .app-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .app-wrapper__content {
+    padding: 40px 40px 0 40px;
+  }
+
+  .app-wrapper__favorite {
+    display: none;
+    background-color: hotpink;
   }
 }

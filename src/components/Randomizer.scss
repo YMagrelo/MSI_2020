@@ -56,6 +56,10 @@
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  &__joke {
+    width: 100%;
+  }
 }
 
 .joke {
@@ -96,5 +100,18 @@
     background: #fff;
     border-radius: 6px;
     padding: 6px 20px;
+  }
+}
+
+.burger {
+  display: flex;
+  &__outer {
+    width: 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    width: 100%;
   }
 }
