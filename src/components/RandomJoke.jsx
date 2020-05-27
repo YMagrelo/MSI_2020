@@ -4,13 +4,19 @@ import '../App.scss';
 import { connect } from 'react-redux';
 import './Randomizer.scss';
 import favorite from '../assets/icon/favorite.svg';
+import activeFavorite from '../assets/icon/heart.svg';
 import message from '../assets/icon/message.svg';
 import { getPassedHours } from '../utilities';
+import { setFavoriteJoke, deleteFavoriteJoke } from '../redux/reducer';
 
 const RandomJoke = (props) => {
-  const { randomJoke, setFavorite } = props;
+  const { randomJoke, setFavorite, deleteFavorite, favoriteJokes } = props;
   const handleAddToFavorite = () => {
     setFavorite(randomJoke);
+  };
+
+  const handleDeleteFavorite = () => {
+    deleteFavorite(randomJoke.id);
   };
 
   const previousDate = new Date(randomJoke.updated_at);
@@ -20,13 +26,23 @@ const RandomJoke = (props) => {
   return (
     <div className="randomizer__content content">
       <div className="content__addToFavorite-wrapper">
-        <button
-          type="button"
-          className="content__addToFavorite"
-          onClick={handleAddToFavorite}
-        >
-          <img src={favorite} alt="add to favorite" />
-        </button>
+        {!favoriteJokes.includes(randomJoke) ? (
+          <button
+            type="button"
+            className="content__addToFavorite"
+            onClick={handleAddToFavorite}
+          >
+            <img src={favorite} alt="add to favorite" />
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="content__addToFavorite"
+            onClick={handleDeleteFavorite}
+          >
+            <img src={activeFavorite} alt="remove from favorite" />
+          </button>
+        )}
       </div>
       <div className="content__item-container">
         <div className="content__textIcon-wrapper">
@@ -64,4 +80,14 @@ const RandomJoke = (props) => {
   );
 };
 
-export default connect()(RandomJoke);
+const mapStateToProps = state => ({
+  randomJoke: state.randomJoke,
+  favoriteJokes: state.favoriteJokes,
+});
+
+const mapDispatchToProps = dispatch => ({
+  deleteFavorite: id => dispatch(deleteFavoriteJoke(id)),
+  setFavorite: payload => dispatch(setFavoriteJoke(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RandomJoke);

@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './Favorite.scss';
+import './Randomizer.scss';
 import { connect } from 'react-redux';
 import { deleteFavoriteJoke } from '../redux/reducer';
-import favorite from '../assets/icon/heart.svg';
+import activeFavorite from '../assets/icon/heart.svg';
 import message from '../assets/icon/message.svg';
 import { getPassedHours } from '../utilities';
 
@@ -29,7 +30,7 @@ const Favorite = (props) => {
                 className="content-favourite__addToFavorite"
                 onClick={handleDeleteFavorite}
               >
-                <img src={favorite} alt="remove from favorites" />
+                <img src={activeFavorite} alt="remove from favorites" />
               </button>
             </div>
             <div className="content-favourite__item-container">

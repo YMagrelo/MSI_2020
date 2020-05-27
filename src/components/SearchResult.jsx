@@ -2,16 +2,27 @@
 import React from 'react';
 import '../App.scss';
 import './Randomizer.scss';
+import './SearchResult.scss';
+import { connect } from 'react-redux';
 import { getPassedHours } from '../utilities';
 import favorite from '../assets/icon/favorite.svg';
+import activeFavorite from '../assets/icon/heart.svg';
 import message from '../assets/icon/message.svg';
+import {
+  deleteFavoriteJoke,
+  setFavoriteJoke,
+} from '../redux/reducer';
 
-export const SearchResult = (props) => {
-  const { searchJokes, setFavorite } = props;
+const SearchResult = (props) => {
+  const { searchJokes, setFavorite, favoriteJokes, deleteFavorite } = props;
   const handleAddToFavorite = (id) => {
     const searchItem = searchJokes.find(item => item.id === id);
 
     setFavorite(searchItem);
+  };
+
+  const handleDeleteFavorite = (id) => {
+    deleteFavorite(id);
   };
 
   return (
@@ -23,25 +34,35 @@ export const SearchResult = (props) => {
         const { id } = joke;
 
         return (
-          <div className="randomizer__content content" key={joke.id}>
-            <div className="content__addToFavorite-wrapper">
-              <button
-                type="button"
-                className="content__addToFavorite"
-                onClick={() => handleAddToFavorite(id)}
-              >
-                <img src={favorite} alt="add to favorites" />
-              </button>
+          <div className="randomizer__content search" key={joke.id}>
+            <div className="search__addToFavorite-wrapper">
+              {!favoriteJokes.includes(joke) ? (
+                <button
+                  type="button"
+                  className="content__addToFavorite"
+                  onClick={() => handleAddToFavorite(id)}
+                >
+                  <img src={favorite} alt="add to favorite" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="content__addToFavorite"
+                  onClick={() => handleDeleteFavorite(id)}
+                >
+                  <img src={activeFavorite} alt="remove from favorite" />
+                </button>
+              )}
             </div>
-            <div className="content__item-container">
-              <div className="content__textIcon-container">
+            <div className="search__item-container">
+              <div className="search__textIcon-wrapper">
                 <img
                   src={message}
                   alt="joke item icon"
-                  className="content__textIcon"
+                  className="search__textIcon"
                 />
               </div>
-              <div className="content__joke joke">
+              <div className="search__joke joke">
                 <div className="joke__id-wrapper">
                   <span className="joke__id-title">ID:</span>
                   <a
@@ -70,3 +91,15 @@ export const SearchResult = (props) => {
     </div>
   );
 };
+
+const mapStateToProps = state => ({
+  searchJokes: state.searchJokes,
+  favoriteJokes: state.favoriteJokes,
+});
+
+const mapDispatchToProps = dispatch => ({
+  deleteFavorite: id => dispatch(deleteFavoriteJoke(id)),
+  setFavorite: payload => dispatch(setFavoriteJoke(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);

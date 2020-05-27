@@ -1,24 +1,9 @@
-.favorite {
-  padding: 40px;
-
-  &__title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
-    color: #ABABAB;
-    margin-bottom: 20px;
-  }
-}
-
-.content-favourite {
-  max-width: 400px;
+.search {
+  width: 680px;
+  padding: 40px 40px 45px 50px;
+  background: #F8F8F8;
+  border-radius: 20px;
   margin-bottom: 20px;
-  padding: 20px;
-  background: #FFFFFF;
-  border: 1px solid #F8F8F8;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
 
   &__addToFavorite-wrapper {
     text-align: right;
@@ -35,9 +20,9 @@
     display: flex;
   }
 
-  &__textIcon-container {
+  &__textIcon-wrapper {
     position: relative;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     margin-right: 10px;
     background: #fff;
@@ -51,4 +36,3 @@
     transform: translate(-50%, -50%);
   }
 }
-

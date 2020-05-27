@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import './Radio.scss';
+import './Randomizer.scss';
 import { connect } from 'react-redux';
 import {
   getCategoriesThunk,
