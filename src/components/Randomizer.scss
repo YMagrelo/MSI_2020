@@ -1,4 +1,12 @@
 .randomizer {
+  position: relative;
+
+  &__burger {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
   &__heading {
     font-weight: bold;
     font-size: 20px;
@@ -16,7 +24,6 @@
     font-size: 24px;
     margin-bottom: 40px;
   }
-
 }
 
 .content {
@@ -105,13 +112,44 @@
 
 .burger {
   display: flex;
-  &__outer {
-    width: 50px;
+  width: 130px;
+
+  &__outter {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    padding: 10px 0;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333333;
+    border-radius: 50%;
+  }
+
+  &__inner {
+    width: 14px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #ABABAB;
+    margin-left: 10px;
   }
 }
 
 @media (max-width: 1024px) {
   .content {
     width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .randomizer__burger {
+    display: none;
   }
 }
