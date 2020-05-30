@@ -52,3 +52,12 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .favorite__title {
+    display: none;
+  }
+
+  .content-favourite {
+    margin-top: 80px;
+  }
+}

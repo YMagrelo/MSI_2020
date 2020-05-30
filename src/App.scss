@@ -26,8 +26,9 @@ body {
 
   &__burger {
     position: absolute;
-    top: 30px;
-    right: 10px;
+    top: 40px;
+    right: 40px;
+    z-index: 99;
   }
 }
 
@@ -57,6 +58,16 @@ body {
     border-radius: 2px;
   }
 
+  &__inner.top.show {
+    position: absolute;
+    transform: rotate(45deg);
+  }
+
+  &__inner.bottom.show {
+    position: absolute;
+    transform: rotate(-45deg);
+  }
+
   &__title {
     font-weight: 500;
     font-size: 20px;
@@ -75,9 +86,16 @@ body {
     padding: 40px 40px 0 40px;
   }
 
-  .app-wrapper__favorite.close {
+  .app-wrapper__favorite {
     display: none;
-    background-color: hotpink;
+    position: absolute;
+    right: 0;
+  }
+
+  .app-wrapper__favorite.show {
+    display: block;
+    min-width: 480px;
+    height: 100vh;
   }
 }
 

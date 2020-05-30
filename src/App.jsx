@@ -2,13 +2,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import './App.scss';
-import className from 'classnames';
+import classNames from 'classnames';
 import Randomizer from './components/Randomizer';
 import Favorite from './components/Favorite';
 
 const App = () => {
   const [open, setOpen] = useState(false);
-  const favoriteIsClosed = 
 
   return (
     <div className="app-wrapper">
@@ -24,13 +23,17 @@ const App = () => {
             onClick={() => setOpen(!open)}
             open={open}
           >
-            <div className="burger__inner" />
-            <div className="burger__inner" />
+            <div className={classNames('burger__inner', 'top', { show: open })} />
+            <div className={classNames('burger__inner', 'bottom', { show: open })} />
           </div>
           <div className="burger__title">Favourite</div>
         </div>
       </div>
-      <div className="app-wrapper__favorite close"><Favorite /></div>
+      <div
+        className={classNames('app-wrapper__favorite', { show: open })}
+      >
+        <Favorite />
+      </div>
     </div>
   );
 };
