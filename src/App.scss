@@ -13,6 +13,7 @@ body {
 .app-wrapper {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  position: relative;
 
   &__content {
     background: #fff;
@@ -21,6 +22,47 @@ body {
 
   &__favorite {
     background: #f8f8f8;
+  }
+
+  &__burger {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+  }
+}
+
+.burger {
+  display: flex;
+  width: 130px;
+
+  &__outter {
+    position: relative;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    padding: 10px 0;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333333;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__inner {
+    //position: absolute;
+    width: 14px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #ABABAB;
+    margin-left: 10px;
   }
 }
 
@@ -33,8 +75,14 @@ body {
     padding: 40px 40px 0 40px;
   }
 
-  .app-wrapper__favorite {
+  .app-wrapper__favorite.close {
     display: none;
     background-color: hotpink;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-wrapper__burger {
+    display: none;
   }
 }

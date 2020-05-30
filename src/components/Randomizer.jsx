@@ -1,9 +1,6 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.scss';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import {
   getRandomJokeThunk,
@@ -14,19 +11,6 @@ import './Randomizer.scss';
 import Radio from './Radio';
 import SearchResult from './SearchResult';
 
-const StyledBurger = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: ${({ open }) => (!open ? '#fff' : '#000')};
-
-`;
-
-const StyledRandomizer = styled.div`
-  background: ${({ open }) => (!open ? '#fff' : '#000')};
-  opacity: ${({ open }) => (!open ? '1' : '0.3')};
-`;
-
 const Randomizer = (props) => {
   const {
     getRandomJoke,
@@ -35,21 +19,11 @@ const Randomizer = (props) => {
     searchJokes,
   } = props;
 
-  const [open, setOpen] = useState(false);
-
   return (
-    <StyledRandomizer
+    <div
       className="randomizer"
-      open={open}
     >
       <h1 className="randomizer__heading">Chuck Norris facts</h1>
-      <StyledBurger
-        className="randomizer__burger"
-        open={open}
-        onClick={() => setOpen(!open)}
-      >
-        <Burger />
-      </StyledBurger>
       <p className="randomizer__title">Hey!</p>
       <p className="randomizer__underTitle">
           Let’s try to find a joke for you:
@@ -68,7 +42,7 @@ const Randomizer = (props) => {
           <SearchResult />
         )
         : null}
-    </StyledRandomizer>
+    </div>
   );
 };
 
@@ -85,15 +59,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Randomizer);
-
-const Burger = () => (
-  <div className="burger">
-    <div
-      className="burger__outter"
-    >
-      <div className="burger__inner" />
-      <div className="burger__inner" />
-    </div>
-    <div className="burger__title">Favourite</div>
-  </div>
-);
