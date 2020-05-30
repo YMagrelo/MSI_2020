@@ -57,7 +57,16 @@
     display: none;
   }
 
-  .content-favourite {
+  .favorite {
     margin-top: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorite {
+    padding: 20px;
+    max-width: 300px;
+    margin: 80px auto 0;
+    margin-left: 170px;
   }
 }

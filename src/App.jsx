@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
@@ -11,9 +12,9 @@ const App = () => {
 
   return (
     <>
-    <div className={classNames('tablet', { show: open })} />
+      <div className={classNames('tablet', { show: open })} />
       <div className="app-wrapper">
-        <div className="app-wrapper__content">
+        <div className={classNames('app-wrapper__content', { show: open })}>
           <Randomizer />
         </div>
         <div

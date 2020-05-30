@@ -116,3 +116,25 @@ body {
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .app-wrapper__content {
+    padding: 20px 20px 0;
+  }
+  .app-wrapper__content.show {
+    display: none;
+  }
+
+  .tablet.show {
+    display: none;
+  }
+
+  .app-wrapper__burger {
+    top: 20px;
+    right: 20px;
+  }
+
+  .app-wrapper__favorite.show {
+    max-width: 320px;
+  }
+}
