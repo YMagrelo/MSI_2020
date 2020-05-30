@@ -10,6 +10,16 @@ body {
   color: #333333;
 }
 
+.tablet.show {
+  position: absolute;
+  width: 100vw;
+  height: 2000px;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
 .app-wrapper {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -17,22 +27,14 @@ body {
   height: 100vh;
 
   &__content {
-    position: relative;
     background: #fff;
     padding: 40px 140px 0 140px;
-  }
-
-  &__tablet.show {
-    position: absolute;
-    width: 100vw;
     height: 100vh;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.3);
   }
 
   &__favorite {
     background: #f8f8f8;
+    z-index: 2;
   }
 
   &__burger {
@@ -62,7 +64,6 @@ body {
   }
 
   &__inner {
-    //position: absolute;
     width: 14px;
     height: 2px;
     background: #fff;
@@ -106,7 +107,7 @@ body {
   .app-wrapper__favorite.show {
     display: block;
     min-width: 480px;
-    height: 100vh;
+    height: 2000px;
   }
 }
 

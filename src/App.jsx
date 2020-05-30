@@ -10,38 +10,40 @@ const App = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="app-wrapper">
-      <div className="app-wrapper__content">
-        <Randomizer />
-        <div className={classNames('app-wrapper__tablet', { show: open })} />
-      </div>
-      <div
-        className="app-wrapper__burger"
-      >
+    <>
+    <div className={classNames('tablet', { show: open })} />
+      <div className="app-wrapper">
+        <div className="app-wrapper__content">
+          <Randomizer />
+        </div>
         <div
-          className="burger"
+          className="app-wrapper__burger"
         >
           <div
-            className="burger__outter"
-            onClick={() => setOpen(!open)}
-            open={open}
+            className="burger"
           >
             <div
-              className={classNames('burger__inner', 'top', { show: open })}
-            />
-            <div
-              className={classNames('burger__inner', 'bottom', { show: open })}
-            />
+              className="burger__outter"
+              onClick={() => setOpen(!open)}
+              open={open}
+            >
+              <div
+                className={classNames('burger__inner', 'top', { show: open })}
+              />
+              <div
+                className={classNames('burger__inner', 'bottom', { show: open })}
+              />
+            </div>
+            <div className="burger__title">Favourite</div>
           </div>
-          <div className="burger__title">Favourite</div>
+        </div>
+        <div
+          className={classNames('app-wrapper__favorite', { show: open })}
+        >
+          <Favorite />
         </div>
       </div>
-      <div
-        className={classNames('app-wrapper__favorite', { show: open })}
-      >
-        <Favorite />
-      </div>
-    </div>
+    </>
   );
 };
 
