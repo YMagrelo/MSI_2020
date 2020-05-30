@@ -14,10 +14,21 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   position: relative;
+  height: 100vh;
 
   &__content {
+    position: relative;
     background: #fff;
     padding: 40px 140px 0 140px;
+  }
+
+  &__tablet.show {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   &__favorite {

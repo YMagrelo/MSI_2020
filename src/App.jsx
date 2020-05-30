@@ -11,7 +11,10 @@ const App = () => {
 
   return (
     <div className="app-wrapper">
-      <div className="app-wrapper__content"><Randomizer /></div>
+      <div className="app-wrapper__content">
+        <Randomizer />
+        <div className={classNames('app-wrapper__tablet', { show: open })} />
+      </div>
       <div
         className="app-wrapper__burger"
       >
@@ -23,8 +26,12 @@ const App = () => {
             onClick={() => setOpen(!open)}
             open={open}
           >
-            <div className={classNames('burger__inner', 'top', { show: open })} />
-            <div className={classNames('burger__inner', 'bottom', { show: open })} />
+            <div
+              className={classNames('burger__inner', 'top', { show: open })}
+            />
+            <div
+              className={classNames('burger__inner', 'bottom', { show: open })}
+            />
           </div>
           <div className="burger__title">Favourite</div>
         </div>
