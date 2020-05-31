@@ -75,3 +75,15 @@
     color: #333333;
   }
 }
+
+@media (max-width: 1024px) {
+  .radio__input {
+    width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .radio__input {
+    width: 200px;
+  }
+}
