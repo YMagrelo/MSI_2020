@@ -19,7 +19,6 @@ const Radio = (props) => {
     clearSearch,
   } = props;
   const [selected, setSelected] = useState('random');
-  const [choosenCategories, setChoosenCategories] = useState('');
   const [query, setQuery] = useState('');
   const [inputError, setInputError] = useState(false);
 
@@ -47,21 +46,16 @@ const Radio = (props) => {
     const { value } = event.target;
 
     setSelected(value);
-    setChoosenCategories('');
   };
 
   const handleCategories = (event) => {
     const value = event.target.innerHTML;
 
-    setChoosenCategories(value);
+    setJokeFromCategories(value);
   };
 
   const handleGetJoke = () => {
-    if (choosenCategories === '') {
-      return getRandomJoke();
-    }
-
-    return setJokeFromCategories(choosenCategories);
+    return getRandomJoke();
   };
 
   return (
