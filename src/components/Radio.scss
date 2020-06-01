@@ -51,7 +51,7 @@
     font-weight: bold;
     font-size: 16px;
     color: #fff;
-    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 10%);
+    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291ff 10%);
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -59,7 +59,7 @@
   }
 
   &__button:hover {
-    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+    //background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 50%);
     transform: scale(1.05);
   }
 }
