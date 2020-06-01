@@ -54,9 +54,7 @@ const Radio = (props) => {
     setJokeFromCategories(value);
   };
 
-  const handleGetJoke = () => {
-    return getRandomJoke();
-  };
+  const handleGetJoke = () => getRandomJoke();
 
   return (
     <>

@@ -29,6 +29,11 @@
     background: #F8F8F8;
     margin-bottom: 10px;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__addToFavorite:hover {
+    transform: scale(1.2);
   }
 
   &__item-container {
