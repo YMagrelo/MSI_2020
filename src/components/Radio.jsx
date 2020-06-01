@@ -31,7 +31,6 @@ const Radio = (props) => {
 
     setInputError(true);
     setQuery(value);
-    setSearchJoke(query);
 
     if (query.length <= 3) {
       clearSearch();
@@ -54,7 +53,13 @@ const Radio = (props) => {
     setJokeFromCategories(value);
   };
 
-  const handleGetJoke = () => getRandomJoke();
+  const handleGetJoke = () => {
+    if (selected === 'random') {
+      getRandomJoke();
+    } else if (selected === 'search') {
+      setSearchJoke(query);
+    }
+  };
 
   return (
     <>

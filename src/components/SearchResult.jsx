@@ -79,9 +79,11 @@ const SearchResult = (props) => {
                   <div className="joke__date">
                     {`Last update: ${passedHours.toFixed()} hours ago`}
                   </div>
-                  <div className="joke__categories">
-                    {joke.categories.length ? joke.categories : null}
-                  </div>
+
+                  {joke.categories.length
+                    ? <div className="joke__categories">{joke.categories}</div>
+                    : null}
+
                 </div>
               </div>
             </div>

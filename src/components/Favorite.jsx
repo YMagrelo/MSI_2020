@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './Favorite.scss';
-import './Randomizer.scss';
 import { connect } from 'react-redux';
 import { deleteFavoriteJoke } from '../redux/reducer';
 import activeFavorite from '../assets/icon/heart.svg';
