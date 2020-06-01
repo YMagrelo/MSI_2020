@@ -119,13 +119,15 @@ const Radio = (props) => {
                   value={query}
                   onChange={handleInput}
                 />
-                {inputError
-                  ? (
-                    <span className="radio__input-error">
+                <div className="radio__error-wrapper">
+                  {inputError
+                    ? (
+                      <span className="radio__input-error">
                       input must be more than 3 characters
-                    </span>
-                  )
-                  : null}
+                      </span>
+                    )
+                    : null}
+                </div>
               </div>
             )
             : null}

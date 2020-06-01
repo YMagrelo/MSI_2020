@@ -2,7 +2,6 @@
   &__list {
     font-size: 18px;
     line-height: 26px;
-    margin-bottom: 20px;
   }
 
   &__item {
@@ -29,10 +28,15 @@
     color: #ABABAB;
   }
 
+  &__error-wrapper {
+    width: 100%;
+    height: 20px;
+    margin-top: 5px;
+  }
+
   &__input-error {
     display: block;
     color: #333333;
-    margin-top: 5px;
     font-size: 15px;
   }
 
@@ -47,10 +51,16 @@
     font-weight: bold;
     font-size: 16px;
     color: #fff;
-    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 10%);
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease-in;
+  }
+
+  &__button:hover {
+    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+    transform: scale(1.05);
   }
 }
 
