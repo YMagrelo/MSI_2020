@@ -45,6 +45,9 @@ const Radio = (props) => {
     const { value } = event.target;
 
     setSelected(value);
+    if (value !== 'search') {
+      clearSearch();
+    }
   };
 
   const handleCategories = (event) => {
