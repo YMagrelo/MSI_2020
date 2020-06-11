@@ -61,36 +61,6 @@
   }
 }
 
-.joke {
-  &__id-wrapper {
-    margin-bottom: 10px;
-  }
-
-  &__id-title,
-  &__id-link,
-  &__date {
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 14px;
-    color: #ABABAB;
-  }
-
-  &__id-link {
-    color: #8EA7FF;
-  }
-
-  &__value {
-    font-size: 18px;
-    line-height: 26px;
-    margin-bottom: 30px;
-  }
-
-  &__footer{
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
 @media (max-width: 1024px) {
   .favorite__title {
     display: none;
